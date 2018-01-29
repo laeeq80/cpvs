@@ -15,10 +15,11 @@
         ENV OBABEL_HOME=/usr/bin/obabel
         ENV SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
         ENV JAVA_OPTS="-Xms512m -Xmx2g"
+	ENV MARIADB_IP=172.17.0.2	
 
 	#COPY ALL REQUIRED RESOURCES TO DOCKER IMAGE
-        COPY ./resources ${APP_ROOT}/resources
-
+        COPY ./resources ${APP_ROOT}/resources		
+	
 	# Moving my distribution to docker image
         COPY ./cpvsapi-1.0.zip ${APP_ROOT}/bin
 	RUN cd ${APP_ROOT}/bin && unzip ${APP_ROOT}/bin/cpvsapi-1.0.zip && chmod u+x ${APP_ROOT}/bin/cpvsapi-1.0/bin/cpvsapi && rm ${APP_ROOT}/bin/cpvsapi-1.0.zip		

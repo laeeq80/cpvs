@@ -1,6 +1,3 @@
 #!/bin/bash
-
-id
-whoami
-/opt/app-root/bin/cpvsapi-1.0/bin/cpvsapi
+/opt/app-root/bin/cpvsapi-1.0/bin/cpvsapi 
 exec tail -f /dev/null
