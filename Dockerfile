@@ -2,7 +2,7 @@
 
         #Installing openbabel
         RUN apt-get update && apt-get install -y openbabel && apt-get -y clean
-	
+	RUN apt-get install -y libatlas3-base libopenblas-base	
 	### Setup user for build execution and application runtime
 	ENV APP_ROOT=/opt/app-root
 	ENV PATH=${APP_ROOT}/bin:${PATH} HOME=${APP_ROOT}
@@ -15,7 +15,6 @@
         ENV OBABEL_HOME=/usr/bin/obabel
         ENV SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
         ENV JAVA_OPTS="-Xms512m -Xmx2g"
-	ENV MARIADB_IP=172.17.0.2	
 
 	#COPY ALL REQUIRED RESOURCES TO DOCKER IMAGE
         COPY ./resources ${APP_ROOT}/resources		
