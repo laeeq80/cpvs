@@ -16,9 +16,14 @@
         ENV OBABEL_HOME=${APP_ROOT}/bin/build/bin/obabel
         ENV SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
         ENV JAVA_OPTS="-Xms512m -Xmx2g"
-
+	
 	#COPY ALL REQUIRED RESOURCES TO DOCKER IMAGE
-        COPY ./resources ${APP_ROOT}/resources		
+        COPY ./resources ${APP_ROOT}/resources
+
+	#Solving issues with jessi
+	RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie main" > /etc/apt/sources.list.d/jessie-backports.list
+	RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
+	RUN apt-get -o Acquire::Check-Valid-Until=false update
 	
 	#Moving openbabel 2.4.1 tar file to docker image and install it
 	COPY ./openbabel-2.4.1.tar.gz ${APP_ROOT}/bin
@@ -28,7 +33,7 @@
 	# Moving my distribution to docker image
         COPY ./cpvsapi-1.0.zip ${APP_ROOT}/bin
 	RUN cd ${APP_ROOT}/bin && unzip ${APP_ROOT}/bin/cpvsapi-1.0.zip && chmod u+x ${APP_ROOT}/bin/cpvsapi-1.0/bin/cpvsapi && rm ${APP_ROOT}/bin/cpvsapi-1.0.zip		
-
+	
 	RUN chmod -R u+x ${APP_ROOT}/bin && \
     		chgrp -R 0 ${APP_ROOT} && \
     		chmod -R g=u ${APP_ROOT} /etc/passwd
