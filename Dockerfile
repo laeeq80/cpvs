@@ -14,8 +14,8 @@
         ENV VINA_DOCKING=${APP_ROOT}/bin/vina
         ENV VINA_CONF=${APP_ROOT}/resources/conf.txt
         ENV OBABEL_HOME=${APP_ROOT}/bin/build/bin/obabel
-        ENV SBT_OPTS="-Xmx512M -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
-        ENV JAVA_OPTS="-Xms256m -Xmx512m"
+        #ENV SBT_OPTS="-Xmx1600M -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"
+        #ENV JAVA_OPTS="-Xms512m -Xmx1600m"
 
         #COPY ALL REQUIRED RESOURCES TO DOCKER IMAGE
         COPY ./resources ${APP_ROOT}/resources
