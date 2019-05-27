@@ -3,7 +3,7 @@ This repo maintains docker file for https://github.com/laeeq80/cpvsAPI. The dock
 
 # Usage
 
-Building docker container
+Building docker image
 
 docker build . -t username/cpvsAPI:receptorPDBID
 
