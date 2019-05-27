@@ -1,4 +1,4 @@
-# cpvsDockerFIle
+# cpvsDockerFile
 This repo maintains docker file for https://github.com/laeeq80/cpvsAPI. The docker file allows to create docker image for a single receptor. On deployment, each docker image creates a single independent service.
 
 # Usage
