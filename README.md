@@ -17,10 +17,10 @@ In the resources folder, one has to keep receptor file in PDBQT format, the vina
 
 Please set following env variables when launching the image
 
-MARIADB_IP
+MARIADB_IP		//IP of machine where mariadb is running. We are using mariadb default port i.e. 3306			
 
-CORS_URL 
+CORS_URL		//The URL of the webpage that will connect to all the Docker containers 
 
-RECEPTOR_NAME
+RECEPTOR_NAME		//Name of the Receptor
 
-RECEPTOR_PDBCODE
+RECEPTOR_PDBCODE	//PDB Code of the Receptor	

@@ -23,7 +23,7 @@
         #Solving issues with jessi
         RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie main" > /etc/apt/sources.list.d/jessie-backports.list
         RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
-        RUN apt-get -o Acquire::Check-Valid-Until=false update
+	RUN rm -rf /var/lib/apt/lists/* && apt update        
 
         #Moving openbabel 2.4.1 tar file to docker image and install it
         COPY ./openbabel-2.4.1.tar.gz ${APP_ROOT}/bin
