@@ -29,6 +29,9 @@
         COPY ./openbabel-2.4.1.tar.gz ${APP_ROOT}/bin
         RUN apt-get update && apt-get install -y gcc && apt-get install -y cmake && apt-get -y clean
         RUN cd ${APP_ROOT}/bin && tar -zxf openbabel-2.4.1.tar.gz && mkdir build && cd build && apt-get install -y build-essential && cmake ../openbabel-2.4.1 -DCMAKE_INSTALL_PREFIX=~/Tools && make -j4 && make install && rm ${APP_ROOT}/bin/openbabel-2.4.1.tar.gz
+	
+	#Installing Zip
+	RUN apt-get update && apt-get install -y unzip zip	
 
         # Moving my distribution to docker image
         COPY ./cpvsapi-1.0.zip ${APP_ROOT}/bin
